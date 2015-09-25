@@ -5,7 +5,7 @@ error_reporting(E_ALL);
 /*********************************************************
 * Includes
 * *******************************************************/
-$libraryPath = realpath(dirname(__FILE__) . '/../library');
+$libraryPath = realpath(dirname(__FILE__) . '/../vendor/nofussframework/nofussframework/Nf');
 $applicationPath = realpath(dirname(__FILE__) . '/..');
 
 /*********************************************************
@@ -21,15 +21,12 @@ if(file_exists($nfAllFile)) {
     require($nfAllFile);
 }
 else {
-    require($libraryPath . '/php/classes/Nf/Autoloader.php');
+    require($libraryPath . '/Autoloader.php');
 }
 $autoloader=new \Nf\Autoloader();
 $autoloader->addMap();
-$autoloader->addNamespaceRoot('Nf', $libraryPath . '/php/classes/Nf');
-$autoloader->addNamespaceRoot('', $libraryPath . '/php/classes');
-$autoloader->addNamespaceRoot('', $libraryPath . '/php/models');
+$autoloader->addNamespaceRoot('Nf', $libraryPath);
 $autoloader->addNamespaceRoot($applicationNamespace, $applicationPath . '/models');
-$autoloader->addNamespaceRoot('Library', $libraryPath . '/php/models');
 $autoloader->register();
 /******************************************************* */
 
